@@ -17,3 +17,7 @@ function camelCase(str) {
 
     return capitalize(str.replace("_", " ")).replace(/\s/gi, "");
 }
+
+function snake_case(str) {
+    return str.toLowerCase().replace(/\s/gi, "_");
+}
