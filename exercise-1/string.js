@@ -15,5 +15,5 @@ function capitalize(str) {
 function camelCase(str) {
     if(typeof str !== "string" || !str) return '';
 
-    return capitalize(str).replace(/\s/gi, "");
+    return capitalize(str.replace("_", " ")).replace(/\s/gi, "");
 }
