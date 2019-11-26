@@ -20,7 +20,13 @@ function camelCase(str) {
 
 function snake_case(str) {
     if(typeof str !== "string" || !str) return '';
-    
+
     return str.toLowerCase().replace(/\s/gi, "_");
 }
+
+function leet(str) {
+    if(typeof str !== "string" || !str) return '';
+
+    return str.replace("A", "4").replace("E", "3").replace("I", "1").replace("O", "0").replace("U", "(_)").replace("Y", "7");
+} 
 
