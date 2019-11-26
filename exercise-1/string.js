@@ -27,6 +27,13 @@ function snake_case(str) {
 function leet(str) {
     if(typeof str !== "string" || !str) return '';
 
-    return str.replace("A", "4").replace("E", "3").replace("I", "1").replace("O", "0").replace("U", "(_)").replace("Y", "7");
+    return str.replace(/a/gi, "4").replace(/e/gi, "3").replace(/i/gi, "1").replace(/o/gi, "0").replace(/u/gi, "(_)").replace(/y/gi, "7");
 } 
 
+console.log(leet('anaconda'));
+
+function prop_access(str) {
+    if(typeof str !== "string" || !str) return '';
+
+
+}
