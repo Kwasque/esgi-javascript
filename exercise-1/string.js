@@ -19,5 +19,8 @@ function camelCase(str) {
 }
 
 function snake_case(str) {
+    if(typeof str !== "string" || !str) return '';
+    
     return str.toLowerCase().replace(/\s/gi, "_");
 }
+
