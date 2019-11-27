@@ -30,7 +30,15 @@ function leet(str) {
     return str.replace(/a/gi, "4").replace(/e/gi, "3").replace(/i/gi, "1").replace(/o/gi, "0").replace(/u/gi, "(_)").replace(/y/gi, "7");
 } 
 
-function prop_access(str) {
+function verlan(str) {
+    if(typeof str !== "string" || !str) return '';
+    
+    return str.split(" ").map(element => {
+        return element.split("").reverse().join("");
+    }).join(" ");
+}
+
+function yoda(str) {
     if(typeof str !== "string" || !str) return '';
 
 
