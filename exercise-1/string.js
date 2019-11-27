@@ -21,7 +21,7 @@ function camelCase(str) {
 function snake_case(str) {
     if(typeof str !== "string" || !str) return '';
 
-    return str.toLowerCase().replace(/\s/gi, "_");
+    return str.toLowerCase().replace(/[^a-zA-Z0-9]/g, "_");
 }
 
 function leet(str) {
@@ -44,13 +44,23 @@ function yoda(str) {
     return str.split(" ").reverse().join(" ");
 }
 
-function vig(str) {
-    if(typeof str !== "string" || !str) return '';
+function vig(texte, code) {
+    if(typeof texte !== "string" || !texte) return '';
 
+    while(code.length < texte.length) code += code; 
+
+    return texte.split("").map(function(item, i) {
+        let codeCharCode = 0;
+        if (code.charCodeAt(i) < 91 && code.charCodeAt(i) > 64) return (texte.charCodeAt(i) + code.charCodeAt(i) - 65 > 91) ? String.fromCharCode(texte.charCodeAt(i) + code.charCodeAt(i) - 65 - 26) : String.fromCharCode(texte.charCodeAt(i) + code.charCodeAt(i) - 65);
+        else if (code.charCodeAt(i) < 123 && code.charCodeAt(i) > 96) return (texte.charCodeAt(i) + code.charCodeAt(i) - 97 > 123) ? String.fromCharCode(texte.charCodeAt(i) + code.charCodeAt(i) - 97 - 26) : String.fromCharCode(texte.charCodeAt(i) + code.charCodeAt(i) - 97);
+        else codeCharCode = code.charCodeAt(i);
+    }).join("");
 }
+
+console.log(vig("alkjzealkzejalzkejaze", "code"));
 
 function prop_access(str) {
     if(typeof str !== "string" || !str) return '';
 
-    
+
 }
