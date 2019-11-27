@@ -46,18 +46,17 @@ function yoda(str) {
 
 function vig(texte, code) {
     if(typeof texte !== "string" || !texte) return '';
-
     while(code.length < texte.length) code += code; 
-
+    let space = 0;
     return texte.split("").map(function(item, i) {
-        let codeCharCode = 0;
-        if (code.charCodeAt(i) < 91 && code.charCodeAt(i) > 64) return (texte.charCodeAt(i) + code.charCodeAt(i) - 65 > 91) ? String.fromCharCode(texte.charCodeAt(i) + code.charCodeAt(i) - 65 - 26) : String.fromCharCode(texte.charCodeAt(i) + code.charCodeAt(i) - 65);
-        else if (code.charCodeAt(i) < 123 && code.charCodeAt(i) > 96) return (texte.charCodeAt(i) + code.charCodeAt(i) - 97 > 123) ? String.fromCharCode(texte.charCodeAt(i) + code.charCodeAt(i) - 97 - 26) : String.fromCharCode(texte.charCodeAt(i) + code.charCodeAt(i) - 97);
-        else codeCharCode = code.charCodeAt(i);
+        if (texte.charCodeAt(i) < 91 && texte.charCodeAt(i) > 64) return (texte.charCodeAt(i) + code.charCodeAt(i - space) - 65 >= 91) ? String.fromCharCode(texte.charCodeAt(i) + code.charCodeAt(i - space) - 65 - 26) : String.fromCharCode(texte.charCodeAt(i) + code.charCodeAt(i - space) - 65);
+        else if (texte.charCodeAt(i) < 123 && texte.charCodeAt(i) > 96) return (texte.charCodeAt(i) + code.charCodeAt(i - space) - 97 >= 123) ? String.fromCharCode(texte.charCodeAt(i) + code.charCodeAt(i - space) - 97 - 26) : String.fromCharCode(texte.charCodeAt(i) + code.charCodeAt(i - space) - 97);
+        else {
+            space ++;
+            return texte[i];
+        }
     }).join("");
 }
-
-console.log(vig("alkjzealkzejalzkejaze", "code"));
 
 function prop_access(str) {
     if(typeof str !== "string" || !str) return '';
