@@ -32,7 +32,7 @@ function leet(str) {
 
 function verlan(str) {
     if(typeof str !== "string" || !str) return '';
-    
+
     return str.split(" ").map(element => {
         return element.split("").reverse().join("");
     }).join(" ");
@@ -41,5 +41,10 @@ function verlan(str) {
 function yoda(str) {
     if(typeof str !== "string" || !str) return '';
 
+    return str.split(" ").reverse().join(" ");
+}
+
+function vig(str) {
+    if(typeof str !== "string" || !str) return '';
 
 }
