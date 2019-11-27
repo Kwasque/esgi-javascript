@@ -48,3 +48,9 @@ function vig(str) {
     if(typeof str !== "string" || !str) return '';
 
 }
+
+function prop_access(str) {
+    if(typeof str !== "string" || !str) return '';
+
+    
+}
