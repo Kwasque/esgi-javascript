@@ -13,10 +13,10 @@ function type_check_v1(variable, type) {
             return typeof(variable) == type.toLowerCase();
             break;
         case "function":
-            return typeof(variable);
+            return typeof(variable) == type.toLowerCase();
             break;
         case "null":
-            return typeof(variable) == type.toLowerCase();
+            return ((typeof(variable) == "object") && (variable == null));
             break;
         case "object":
             return typeof(variable) == type.toLowerCase();
@@ -25,14 +25,3 @@ function type_check_v1(variable, type) {
             return undefined;
     }
 }
-
-
-
-console.log(type_check_v1("string", "string"))
-console.log(type_check_v1(8, "number"))
-console.log(type_check_v1(true, "boolean"))
-console.log(type_check_v1(undefined, "undefined"))
-console.log(type_check_v1(function(){}, "function"))
-console.log(type_check_v1(null, "null"))
-console.log(type_check_v1([0,1,2,3,4], "object"))
-console.log(type_check_v1(new Object({toto: 123}), "object"))
