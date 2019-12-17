@@ -44,17 +44,22 @@ function yoda(str) {
     return str.split(" ").reverse().join(" ");
 }
 
-function vig(texte, code) {
-    if(typeof texte !== "string" || !texte) return '';
-    while(code.length < texte.length) code += code; 
-    let space = 0;
-    return texte.split("").map(function(item, i) {
-        if (texte.charCodeAt(i) < 91 && texte.charCodeAt(i) > 64) return (texte.charCodeAt(i) + code.charCodeAt(i - space) - 65 >= 91) ? String.fromCharCode(texte.charCodeAt(i) + code.charCodeAt(i - space) - 65 - 26) : String.fromCharCode(texte.charCodeAt(i) + code.charCodeAt(i - space) - 65);
-        else if (texte.charCodeAt(i) < 123 && texte.charCodeAt(i) > 96) return (texte.charCodeAt(i) + code.charCodeAt(i - space) - 97 >= 123) ? String.fromCharCode(texte.charCodeAt(i) + code.charCodeAt(i - space) - 97 - 26) : String.fromCharCode(texte.charCodeAt(i) + code.charCodeAt(i - space) - 97);
-        else {
-            space ++;
-            return texte[i];
-        }
+function vig(str, code) {
+    if(typeof str !== "string" || !str) return '';
+    if(typeof code !== "string" || !code) return '';
+
+    while(code.length < str.length) {
+        code += code;
+    }
+
+    let codeIndex = 0;
+    return str.toLowerCase().split('').map(function(char) {
+        const charCode = char.charCodeAt(0) - "a".charCodeAt(0);
+        if (charCode < 0 || charCode > 25) return char;
+        const codeCode = code[codeIndex++].charCodeAt(0) - "a".charCodeAt(0);
+        const cryptedCode = (charCode + codeCode) % 26;
+        const cryptedChar = cryptedCode + "a".charCodeAt(0);
+        return String.fromCharCode(cryptedChar);
     }).join("");
 }
 
