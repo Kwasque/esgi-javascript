@@ -17,7 +17,7 @@ function type_check_v2(variable, conf) {
     }
 
     if (conf.hasOwnProperty('value')) {
-
+        return variable === conf.variable
     }
 
     return true
