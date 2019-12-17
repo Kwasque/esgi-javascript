@@ -1,12 +1,8 @@
 function type_check_v1(variable, type) {
-    switch (type.toLowerCase()) {
-        case "array":
-            return Array.isArray(variable)
-        case "null":
-            return variable === null;
+    switch (typeof variable) {
         case "object":
-            if (type === "object" && value === null) return false;
-            return !Array.isArray(variable)
+            if(Array.isArray(variable)) return type === "array";
+            if(value === null) return type == "null";
         default:
             return typeof(variable) === type.toLowerCase();
     }
