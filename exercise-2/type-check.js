@@ -16,7 +16,8 @@ function type_check_v2(value, conf) {
             case "value":
                 if (value !== conf[key]) return false;
             case "enum":
-                conf[key].forEach(element => {
+                let newArray = conf[key];
+                newArray.forEach(element => {
                     if (value === element) return true;
                 });
                 return false;
