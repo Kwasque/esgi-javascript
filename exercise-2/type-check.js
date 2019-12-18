@@ -9,17 +9,19 @@ function type_check_v1(variable, type) {
 }
 
 function type_check_v2(variable, conf) {
-    if (conf.hasOwnProperty('type')) {
-        return type_check_v1(variable, conf.type);
+    for (key in conf) {
+        switch(key) {
+            case "type":
+                if (!type_check_v1(value, conf[key])) return false;
+            case "value":
+                if (value !== conf[key]) return false;
+            case "enum":
+                conf[key].forEach(element => {
+                    if (value === element) return true;
+                });
+                return false;
+        } 
     }
 
-    if (conf.hasOwnProperty('value')) {
-        return variable === conf.variable
-    }
-
-    if (conf.hasOwnProperty('enum')) {
-
-    }
-
-    return true
+    return true;
 }
