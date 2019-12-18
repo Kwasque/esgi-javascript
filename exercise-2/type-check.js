@@ -2,7 +2,7 @@ function type_check_v1(variable, type) {
     switch (typeof variable) {
         case "object":
             if(Array.isArray(variable)) return type === "array";
-            if(value === null) return type == "null";
+            if(variable === null) return type == "null";
         default:
             return typeof(variable) === type.toLowerCase();
     }
