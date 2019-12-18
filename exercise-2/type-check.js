@@ -4,7 +4,7 @@ function type_check_v1(value, type) {
             if(Array.isArray(value)) return type === "array";
             if(value === null) return type == "null";
         default:
-            return typeof(value) === type.toLowerCase();
+            return typeof value === type.toLowerCase();
     }
 }
 
@@ -16,13 +16,9 @@ function type_check_v2(value, conf) {
             case "value":
                 if (value !== conf[key]) return false;
             case "enum":
-                let newArray = conf[key];
-                newArray.forEach(element => {
-                    if (value === element) return true;
-                });
-                return false;
+                conf[key].forEach(element => { result = (element == value) ? true : false });
+                return result;
         } 
     }
-
     return true;
 }
