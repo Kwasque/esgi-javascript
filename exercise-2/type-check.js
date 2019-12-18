@@ -1,14 +1,14 @@
-function type_check_v1(variable, type) {
-    switch (typeof variable) {
+function type_check_v1(value, type) {
+    switch (typeof value) {
         case "object":
-            if(Array.isArray(variable)) return type === "array";
-            if(variable === null) return type == "null";
+            if(Array.isArray(value)) return type === "array";
+            if(value === null) return type == "null";
         default:
-            return typeof(variable) === type.toLowerCase();
+            return typeof(value) === type.toLowerCase();
     }
 }
 
-function type_check_v2(variable, conf) {
+function type_check_v2(value, conf) {
     for (key in conf) {
         switch(key) {
             case "type":
