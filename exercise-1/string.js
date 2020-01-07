@@ -63,8 +63,24 @@ function vig(str, code) {
     }).join("");
 }
 
-function prop_access(str) {
+function prop_access(obj, str) {
     if(typeof str !== "string" || !str) return '';
 
+    var newObj = obj, returnValue = '';
 
+    strSplit = str.split(".");
+    strSplit.forEach(element => {
+        if (!returnValue) {
+            newObj = newObj[element];
+            if (!newObj) {
+                returnValue = str.substring(0, str.indexOf(element) + element.length) + " not exist";
+            }
+        }
+    });
+
+    if (returnValue) {
+        return returnValue;
+    } else {
+        return newObj;
+    }
 }
